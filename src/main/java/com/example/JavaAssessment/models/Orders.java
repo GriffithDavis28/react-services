@@ -18,11 +18,31 @@ public class Orders {
     
     @Id
     private String id;
-
     private List<OrderStruct> order;
+    private int totalPrice;
 
     public Orders(String id, List<OrderStruct> order) {
-        this.id = id;
+        this.id=id;
         this.order = order;
+    }
+
+    public void calculateTotalPrice(){
+        int totalPrice = 0;
+        for(OrderStruct orderStruct : order){
+            orderStruct.calculateTotalPrice();
+            orderStruct.totalQuantity();
+            totalPrice +=orderStruct.getTotalPrice();
+            // totalPrice += orderStruct.getTotalPrice() * orderStruct.getQuantity();
+            }
+            this.totalPrice = totalPrice;
+    }
+
+    public int getTotalQuantity() {
+        int totalQuantity = 0;
+        for (OrderStruct orderStruct : order) {
+            orderStruct.calculateTotalPrice();
+            totalQuantity += orderStruct.getQuantity();
+        }
+        return totalQuantity;
     }
 }

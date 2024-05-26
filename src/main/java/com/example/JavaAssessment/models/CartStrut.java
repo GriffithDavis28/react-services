@@ -8,15 +8,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CartStrut {
-    private String name;
-    private String description;
-    private String price;
+    private Product product;
     private int quantity;
-
-    public CartStrut(String name, String description, String price, int quantity) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
+    public CartStrut(Product product, int quantity) {
+        this.product = product;
         this.quantity = quantity;
     }
 

@@ -1,5 +1,6 @@
 package com.example.JavaAssessment.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -17,13 +18,19 @@ public class Cart {
     
     @Id
     private String id;
-
-    private List<CartStrut> items;
+    private List<CartStrut> items = new ArrayList<>();
+    private double totalPrice;
 
     public Cart(String id, List<CartStrut> items) {
         this.id = id;
         this.items = items;
     }
-    
-    
+
+    public void calculateTotalPrice() {
+        double totalPrice = 0.0;
+        for (CartStrut item : items) {
+            totalPrice += item.getProduct().getPrice() * item.getQuantity();
+        }
+        this.totalPrice = totalPrice;
+    }
 }

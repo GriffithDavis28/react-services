@@ -16,7 +16,9 @@ public class CartService {
     private CartRepository cartRepo;
 
     public Cart addCart(Cart cart) {
-        return cartRepo.save(cart);
+        Cart savedCart = cartRepo.save(cart);
+        savedCart.calculateTotalPrice();
+        return cartRepo.save(savedCart);
     }
     
     public List<Cart> getCart()
