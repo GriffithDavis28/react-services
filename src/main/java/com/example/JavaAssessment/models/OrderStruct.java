@@ -25,7 +25,7 @@ public class OrderStruct {
     }
 
     public void calculateTotalPrice() {
-        totalQuantity(); // call totalQuantity to calculate total quantity
+        totalQuantity(); 
         double totalPrice = 0.0;
         for (CartStrut item : items) {
             totalPrice += item.getProduct().getPrice() * item.getQuantity();
